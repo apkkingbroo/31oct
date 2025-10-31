@@ -1,83 +1,37 @@
+
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>82 Lottery Panel</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>82 Lottery WinGo</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <style>
 :root{--a1:#00d4ff;--a2:#7a00ff;--success:#00d173;--danger:#ff4a5b;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
-body{background:#000;height:100vh;width:100vw;color:#fff;overflow:hidden;display:flex;flex-direction:column}
-
-/********* LOTTERY WEBSITE BOX *********/
-.lotteryBox{
-width:100%;height:55vh;background:#fff;overflow:hidden;
-border-bottom:3px solid #222
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial}
+body{background:#000;color:#fff;overflow:hidden}
+.lotteryBox{height:70vh;width:100%;border-bottom:3px solid #111}
 .lotteryBox iframe{width:100%;height:100%;border:0}
-
-/********* UI BOX *********/
-.panelUI{
-flex:1;background:rgba(255,255,255,.12);
-backdrop-filter:blur(12px);
-padding:10px;display:flex;flex-direction:column;gap:6px;
-border-top:2px solid rgba(255,255,255,.2)
-}
-
-.header{
-display:flex;justify-content:space-between;align-items:center;
-padding:4px 0;margin-bottom:4px
-}
-.titleBtn{
-display:flex;align-items:center;gap:6px;font-size:15px;font-weight:900;
-cursor:pointer;color:#30A8FF
-}
+.panel{height:30vh;display:flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.05);padding:8px;border-top:2px solid rgba(255,255,255,.1)}
+.header{display:flex;justify-content:space-between;align-items:center}
+.titleBtn{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:900;color:#37a8ff;cursor:pointer}
 .btnRow{display:flex;gap:6px}
-.btn{padding:6px 10px;border-radius:8px;border:0;font-size:12px;font-weight:900;cursor:pointer}
-.join{background:#229ED9;color:#fff}
+.btn{padding:5px 10px;border-radius:8px;border:0;font-size:11px;font-weight:900;cursor:pointer}
+.join{background:#229ED9;color:#00121a}
 .buy{background:linear-gradient(90deg,var(--a1),var(--a2));color:#00121a}
-
-.info{display:flex;justify-content:space-between;font-size:11px;font-weight:900}
-
-.pred{text-align:center;font-size:19px;font-weight:900;background:rgba(255,255,255,.2);
-padding:8px;border-radius:10px}
-
+.info{display:flex;justify-content:space-between;font-size:12px;font-weight:800}
+.pred{text-align:center;font-size:19px;font-weight:900;background:rgba(255,255,255,.12);padding:7px;border-radius:10px}
 .conf{display:flex;align-items:center;gap:6px;font-size:10px}
-.barWrap{flex:1;height:8px;background:rgba(255,255,255,.25);border-radius:10px}
+.barWrap{flex:1;height:8px;background:rgba(255,255,255,.2);border-radius:10px}
 .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:10px}
-
-.stats{display:flex;gap:6px}
-.st{flex:1;text-align:center;background:rgba(255,255,255,.15);
-padding:6px;border-radius:10px;font-size:10px}
-.st b{font-size:14px;color:#fff}
-
-.hist{flex:1;background:rgba(255,255,255,.15);
-border-radius:10px;padding:6px;overflow:auto;font-size:10px}
-.item{display:flex;justify-content:space-between;padding:4px;margin-bottom:3px;
-background:rgba(255,255,255,.1);border-radius:8px}
-.badge{padding:2px 6px;border-radius:10px;font-size:10px;font-weight:900;color:#00121a}
-
-/********* MODAL *********/
-.modal{
-position:fixed;inset:0;background:rgba(0,0,0,.7);
-display:none;align-items:center;justify-content:center;z-index:200
-}
-.card{
-width:80%;max-width:280px;background:rgba(255,255,255,.15);
-padding:14px;border-radius:14px;text-align:center
-}
-.key{width:100%;padding:10px;border-radius:10px;
-border:1px solid rgba(255,255,255,.4);
-background:rgba(255,255,255,.3);color:#fff;margin-bottom:10px}
+.hist{flex:1;background:rgba(255,255,255,.07);border-radius:10px;padding:6px;overflow:auto;font-size:10px}
+.item{display:flex;justify-content:space-between;font-weight:900;padding:4px;margin-bottom:3px;background:rgba(255,255,255,.08);border-radius:8px}
+.badge{padding:2px 6px;border-radius:10px;font-size:10px;font-weight:900}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:20}
+.card{width:80%;max-width:260px;background:rgba(255,255,255,.1);padding:15px;border-radius:14px;text-align:center}
+.key{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.2);color:#fff;margin-bottom:10px}
 .pBtn{width:100%;padding:10px;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:10px;border:0;font-weight:900;color:#00121a}
-
-/********* FULL SCREEN TEXT *********/
-.overlayMsg{
-position:fixed;inset:0;background:rgba(0,0,0,.85);
-z-index:500;display:none;align-items:center;justify-content:center;
-text-align:center;font-size:19px;font-weight:900;line-height:1.6
-}
+.overlayMsg{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;display:none;align-items:center;justify-content:center;text-align:center;font-size:19px;font-weight:900;line-height:1.6;color:#fff}
 </style>
 </head>
 <body>
@@ -86,8 +40,7 @@ text-align:center;font-size:19px;font-weight:900;line-height:1.6
 <iframe src="https://82bet22.com/#/register?invitationCode=14244992621"></iframe>
 </div>
 
-<div class="panelUI">
-
+<div class="panel">
 <div class="header">
  <div class="titleBtn" id="goTG"><i class="fab fa-telegram"></i> Apkmodderkings</div>
  <div class="btnRow">
@@ -96,7 +49,7 @@ text-align:center;font-size:19px;font-weight:900;line-height:1.6
  </div>
 </div>
 
-<div class="info"><span id="pText">----</span><span id="tText">00:00</span></div>
+<div class="info"><span id="pText">-----</span><span id="timer">--:--</span></div>
 <div class="pred" id="predVal">WAIT</div>
 
 <div class="conf">
@@ -104,19 +57,12 @@ text-align:center;font-size:19px;font-weight:900;line-height:1.6
  <span id="confPct">--%</span>
 </div>
 
-<div class="stats">
- <div class="st"><small>Wins</small><b id="wins">0</b></div>
- <div class="st"><small>Losses</small><b id="loss">0</b></div>
- <div class="st"><small>Acc</small><b id="acc">0%</b></div>
-</div>
-
-<div class="hist" id="histList"></div>
-
+<div class="hist" id="histList"><div>No history</div></div>
 </div>
 
 <div class="modal" id="modal">
  <div class="card">
-  <input id="key" class="key" placeholder="Enter Premium Key"/>
+  <input id="key" class="key" placeholder="Enter Premium Key">
   <button class="pBtn" id="access">Access</button>
  </div>
 </div>
@@ -124,71 +70,89 @@ text-align:center;font-size:19px;font-weight:900;line-height:1.6
 <div class="overlayMsg" id="overlay"></div>
 
 <script>
-goTG.onclick=()=>window.open("https://telegram.me/apkmodderkings","_blank");
-joinBtn.onclick=()=>window.open("https://telegram.me/apkmodderkings","_blank");
+goTG.onclick=()=>window.open("https://telegram.me/apkmodderkings");
+joinBtn.onclick=()=>window.open("https://telegram.me/apkmodderkings");
 buyBtn.onclick=()=>{modal.style.display="flex";key.focus();}
-
 access.onclick=()=>{
  modal.style.display="none";
  overlay.style.display="flex";
  let s=5;
- let t1=setInterval(()=>{
- overlay.innerText="Wrong Key!\nBuy Premium Key in "+s+"s";
- s--;
- if(s<0){
-  clearInterval(t1);
-  let t=0;
-  let t2=setInterval(()=>{
-   overlay.innerText="Redirecting Telegram in "+t+"s...";
-   t--;
-   if(t<0){
-    clearInterval(t2);
-    window.location.href="https://telegram.me/absentExe";
-   }
-  },1000);
- }
-},1000);
+ let t=setInterval(()=>{
+  overlay.innerText="Wrong Key!\nBuy Premium Key in "+s+"s";
+  s--;
+  if(s<0){clearInterval(t);window.location="https://telegram.me/absentExe";}
+ },1000);
 };
 
-/*** Prediction Logic ***/
-let sec=60,w=0,l=0,h=[];
-function per(){
- let d=new Date(),m=d.getMonth()+1;
- let p=10001+(d.getHours()*60+d.getMinutes()-330);
- return`${d.getFullYear()}${String(m).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}1000${p}`
+const API="https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json";
+let lastIssue=null,h=[],count=60,start=0;
+
+const $=id=>document.getElementById(id);
+const getT=n=>n>=5?"BIG":"SMALL";
+
+function startTimer(){
+ clearInterval(start);
+ count=60;
+ start=setInterval(()=>{
+  count--;
+  $('timer').innerText="00:"+String(count).padStart(2,'0');
+  if(count<=0){
+   clearInterval(start);
+  }
+ },1000);
 }
-function tick(){
- sec--;if(sec<0){sec=60;predict();}
- tText.innerText="00:"+String(sec).padStart(2,'0');
- pText.innerText=per();
+
+async function fetchData(){
+try{
+ let r=await fetch(API,{cache:'no-store'});
+ let j=await r.json();
+ let L=j?.data?.list||[];
+ if(!L.length)return;
+ let A=L[0];
+ let issue=A.issueNumber;
+ let num=parseInt(A.number,10);
+ let act=getT(num);
+ $('pText').innerText=issue;
+
+ if(issue!==lastIssue){
+   if(h[0] && h[0].issue==="NEXT"){
+     h[0].issue=issue;
+     h[0].res=act;
+     h[0].win=(h[0].pred===act);
+   }
+   predict(L);
+   lastIssue=issue;
+   startTimer();
+   render();
+ }
+}catch(e){}
 }
-function predict(){
- let pred=Math.random()>.8?"BIG":"SMALL";
- let cf=Math.floor(Math.random()*36)+58;
- predVal.innerText=pred;
- bar.style.width=cf+"%";
- confPct.innerText=cf+"%";
- let o={p:per(),pred,status:"PENDING"};
- h.unshift(o);render();
- setTimeout(()=>result(o),2000);
+
+function predict(L){
+ let pred=Math.random()>.5?"BIG":"SMALL";
+ let conf=60+Math.floor(Math.random()*30);
+ $('predVal').innerText=pred;
+ $('bar').style.width=conf+"%";
+ $('confPct').innerText=conf+"%";
+ h.unshift({issue:"NEXT",pred,res:"--",win:null});
 }
-function result(o){
- let act=Math.random()>.5?"BIG":"SMALL";
- o.status=(act===o.pred)?"WIN":"LOSS";
- if(o.status=="WIN")w++;else l++;
- stats();render();
-}
-function stats(){
- wins.innerText=w;loss.innerText=l;
- let tot=w+l;acc.innerText=tot?(Math.round((w/tot)*100))+"%":"0%";
-}
+
 function render(){
- histList.innerHTML="";
- h.slice(0,20).forEach(i=>{
- histList.innerHTML+=`<div class="item"><span>${i.p}</span><span class="badge" style="background:${i.status=="WIN"?"var(--success)":"var(--danger)"}">${i.pred}</span></div>`;
+ $('histList').innerHTML="";
+ h.slice(0,10).forEach(i=>{
+ $('histList').innerHTML+=`
+ <div class="item">
+ <span>${i.issue}</span>
+ <span class="badge" style="background:${i.win===true?"var(--success)":i.win===false?"var(--danger)":"#888"}">${i.pred}</span>
+ </div>`;
  });
 }
-predict();setInterval(tick,1000);
+
+setInterval(fetchData,4000);
+fetchData();
+startTimer();
 </script>
+
 </body>
 </html>
+
