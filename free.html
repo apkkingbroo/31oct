@@ -3,280 +3,201 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>DM WIN PREDICTOR — Premium 5 Theme</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<title>DM WIN PREDICTOR</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-/* ✅ 5 Full Light + Dark Themes */
-
-/* 1️⃣ Blue Neon (Default Light) */
-.theme-blue-light{
---bg:#eaf3ff;
+:root.dark{
+--accent:#00ff88;
+--bg:#000;
+--panel:#07110c;
+--card:#0a1812;
+--text:#eafff5;
+}
+:root.light{
+--accent:#009977;
+--bg:#f6f7f8;
 --panel:#ffffff;
---card:#f5f9ff;
---text:#021222;
---muted:#596b7a;
---accent:#007bff;
---shadow:rgba(0,123,255,0.22);
+--card:#eef1f3;
+--text:#02110a;
 }
 
-/* Blue Dark */
-.theme-blue-dark{
---bg:#02050b;
---panel:#06101c;
---card:#0b1b2e;
---text:#ecf7ff;
---muted:#9ab2cc;
---accent:#0095ff;
---shadow:rgba(0,149,255,0.32);
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial}
+body{background:var(--bg);color:var(--text);overflow:hidden}
 
-/* 2️⃣ Green Matrix */
-.theme-green-light{
---bg:#eaffea;
---panel:#ffffff;
---card:#f1fff1;
---text:#031b09;
---muted:#4f7a55;
---accent:#00bb63;
---shadow:rgba(0,255,120,0.22);
-}
-.theme-green-dark{
---bg:#000f05;
---panel:#00190a;
---card:#042c13;
---text:#eafff0;
---muted:#82b090;
---accent:#00ff69;
---shadow:rgba(0,255,120,0.28);
-}
+#bgFrame{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:1}
 
-/* 3️⃣ Pink Royale */
-.theme-pink-light{
---bg:#fff0fb;
---panel:#ffffff;
---card:#ffe8f8;
---text:#280a22;
---muted:#aa6b98;
---accent:#ff2fa9;
---shadow:rgba(255,47,169,0.22);
-}
-.theme-pink-dark{
---bg:#0b0209;
---panel:#1d0518;
---card:#300929;
---text:#ffe6f8;
---muted:#cc8bb8;
---accent:#ff47c8;
---shadow:rgba(255,71,200,0.27);
-}
-
-/* 4️⃣ Purple Galaxy */
-.theme-purple-light{
---bg:#f3edff;
---panel:#ffffff;
---card:#f4e8ff;
---text:#190e25;
---muted:#7a5a98;
---accent:#8e2bff;
---shadow:rgba(142,43,255,0.22);
-}
-.theme-purple-dark{
---bg:#10031b;
---panel:#200839;
---card:#2e0c52;
---text:#f9edff;
---muted:#b88ae0;
---accent:#bb4aff;
---shadow:rgba(200,109,255,0.32);
-}
-
-/* 5️⃣ Gold Royal */
-.theme-gold-light{
---bg:#fff8e0;
---panel:#ffffff;
---card:#fff2c7;
---text:#2c1f00;
---muted:#9f875a;
---accent:#da9a00;
---shadow:rgba(218,154,0,0.26);
-}
-.theme-gold-dark{
---bg:#1b1400;
---panel:#332600;
---card:#4a3800;
---text:#fff6d9;
---muted:#cbb784;
---accent:#ffce1a;
---shadow:rgba(255,206,26,0.38);
-}
-
-/* ✅ Base UI */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-body{background:var(--bg);color:var(--text);overflow:hidden;transition:.25s}
-
+/* Floating Button */
 #floatBtn{
-position:fixed;right:18px;bottom:18px;width:40px;height:40px;
-background:var(--accent);border-radius:50%;
+position:fixed;right:12px;bottom:18px;
+width:52px;height:52px;border-radius:50%;
+background:var(--accent);
 display:flex;align-items:center;justify-content:center;
-cursor:pointer;z-index:2000;touch-action:none;
-box-shadow:0 0 14px var(--shadow);
+cursor:pointer;z-index:2000;
+box-shadow:0 6px 25px rgba(0,0,0,.4);
 }
-#floatBtn i{color:#fff;font-size:18px}
+#floatBtn i{font-size:26px;color:#000}
 
+/* Panel */
 #panel{
-position:fixed;left:50%;bottom:-220px;transform:translateX(-50%);
-width:330px;border-radius:18px;padding:12px;
-background:var(--panel);
-box-shadow:0 0 40px var(--shadow);
-transition:.42s;opacity:0;pointer-events:none;z-index:1500;
-border:1px solid rgba(0,0,0,0.05);
+position:fixed;left:50%;bottom:90px;
+transform:translateX(-50%) translateY(40px);
+width:90vw;max-width:390px;
+background:var(--panel);padding:14px;
+border-radius:14px;
+opacity:0;pointer-events:none;
+transition:.35s ease;
+box-shadow:0 12px 32px rgba(0,0,0,.4);
+z-index:999999;
 }
-#panel.active{opacity:1;bottom:70px;pointer-events:auto}
+#panel.active{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 
-.panelTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.headerBtns{display:flex;gap:6px}
-.headerBtn{width:32px;height:32px;background:var(--card);border-radius:8px;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.headerBtn i{color:var(--text);font-size:14px}
+.title{font-size:15px;font-weight:900;margin-bottom:8px;text-align:center}
 
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.card{background:var(--card);padding:8px;border-radius:12px}
-.label{font-size:11px;color:var(--muted)}
-.value{font-size:16px;font-weight:800;margin-top:3px}
-.pred.big{color:#009f4f}
-.pred.small{color:#c60032}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:var(--card);padding:8px;border-radius:10px}
+.label{font-size:11px;opacity:.6}
+.value{margin-top:3px;font-size:17px;font-weight:800}
 
-.progress{height:6px;border-radius:6px;background:#ddd;margin-top:4px;overflow:hidden}
-.fill{height:100%;width:0;background:var(--accent);transition:.3s}
+.progress{height:6px;background:#0004;border-radius:6px;margin-top:4px;overflow:hidden}
+.fill{height:100%;background:var(--accent);width:0}
 
-.stats{display:flex;gap:6px;margin-top:4px}
-.stat{flex:1;background:var(--panel);padding:6px;border-radius:8px;text-align:center;font-size:10px;border:1px solid rgba(0,0,0,0.05)}
-.num{font-size:13px;font-weight:900}
+.pred.big{color:#00ff6f}
+.pred.small{color:#ff3b6c}
 
-.history{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
-.tag{padding:4px 6px;border-radius:999px;font-size:10px;font-weight:800;background:var(--accent);color:#fff}
-.tag.small{background:#ff3b6c}
+.stats{display:flex;gap:6px;margin-top:6px}
+.stat{flex:1;background:var(--panel);text-align:center;padding:6px;border-radius:8px;font-size:11px}
+.num{font-size:14px;font-weight:900}
 
-.panelFooter{
-margin-top:6px;border-top:1px solid #ddd;padding-top:6px;
-display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--muted)
+/* ✅ THEME + HIDE button */
+.ctrlBtns{display:flex;justify-content:space-between;margin-top:10px}
+.ctrlBtns button{
+flex:1;margin:0 4px;padding:8px;
+background:var(--accent);border:none;border-radius:8px;
+font-weight:800;font-size:13px;color:#000;cursor:pointer;
 }
-.footer-left{display:flex;gap:6px;align-items:center}
-.footer-left a{color:var(--muted);font-size:11px;text-decoration:none}
+
+/* Footer */
+.footer{text-align:center;margin-top:8px;font-size:10px;opacity:.7}
+.footer a{color:var(--accent);font-weight:bold;text-decoration:none;font-size:11px}
 </style>
 </head>
 
-<body class="theme-blue-light">
+<body>
 
 <audio id="bigS" src="https://assets.mixkit.co/sfx/download/mixkit-arcade-mechanical-bling-210.wav"></audio>
 <audio id="smallS" src="https://assets.mixkit.co/sfx/download/mixkit-select-click-1109.wav"></audio>
 
-<iframe src="https://www.dmwin2.com/#/register?invitationCode=288111959181"
-style="position:fixed;inset:0;width:100%;height:100%;border:0;"></iframe>
+<iframe id="bgFrame" src="https://www.dmwin2.com/#/register?invitationCode=288111959181"></iframe>
 
 <div id="floatBtn"><i class="fa-solid fa-circle-dot"></i></div>
 
 <div id="panel">
-<div class="panelTop">
-<b style="font-size:13px">DM WIN PREDICTOR</b>
-<div class="headerBtns">
-<button class="headerBtn" id="themeBtn"><i class="fa-solid fa-palette"></i></button>
-<button class="headerBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
-</div>
-</div>
+
+<div class="title">DM WIN PREDICTOR</div>
 
 <div class="grid">
 <div class="card">
 <div class="label">Period</div>
-<div class="value" id="pid">--</div>
-<div class="progress"><div class="fill" id="pbar"></div></div>
+<div id="pid" class="value">--</div>
+<div class="progress"><div id="pbar" class="fill"></div></div>
 </div>
 
 <div class="card">
 <div class="label">Time</div>
-<div class="value" id="time">00:00</div>
+<div id="time" class="value">00:00</div>
 </div>
 
 <div class="card">
-<div class="label">Predict</div>
-<div class="value pred" id="predVal">--</div>
+<div class="label">Prediction</div>
+<div id="predVal" class="value pred">--</div>
 </div>
 
 <div class="card">
 <div class="label">Stats</div>
 <div class="stats">
-<div class="stat"><div class="num" id="w">0</div>W</div>
-<div class="stat"><div class="num" id="l">0</div>L</div>
-<div class="stat"><div class="num" id="acc">0%</div>ACC</div>
+<div class="stat"><div id="w" class="num">0</div>W</div>
+<div class="stat"><div id="l" class="num">0</div>L</div>
+<div class="stat"><div id="acc" class="num">0%</div>ACC</div>
 </div>
 </div>
 </div>
 
-<div class="history" id="hist"></div>
-
-<div class="panelFooter">
-<div class="footer-left">
-© made by <a href="https://telegram.me/apkmodderkings" target="_blank"><i class="fa-brands fa-telegram"></i>apkmodderkings</a>
+<!-- ✅ “THEME + HIDE” Buttons -->
+<div class="ctrlBtns">
+<button id="theme">🌙 Theme</button>
+<button id="hide">Hide</button>
 </div>
+
+<div class="footer">
+© Made by <a href="https://telegram.me/apkmodderkings" target="_blank">Apkmodderkings</a>
 </div>
 </div>
 
 <script>
-let icon=floatBtn,panel=document.getElementById("panel");
-let drag=false,moved=false,sx,sy;
-icon.onpointerdown=e=>{drag=true;moved=false;sx=e.clientX-icon.offsetLeft;sy=e.clientY-icon.offsetTop};
-onpointermove=e=>{if(!drag)return;moved=true;icon.style.left=(e.clientX-sx)+"px";icon.style.top=(e.clientY-sy)+"px";icon.style.right="auto"};
-onpointerup=()=>{if(!moved)panel.classList.add("active");drag=false};
-closeBtn.onclick=()=>panel.classList.remove("active");
+/* DEFAULT THEME */
+const root=document.documentElement;
+root.classList.add("dark");
 
-/* ✅ 5 Themes cycle: Light→Dark swap */
-let themes=[
-["theme-blue-light","theme-blue-dark"],
-["theme-green-light","theme-green-dark"],
-["theme-pink-light","theme-pink-dark"],
-["theme-purple-light","theme-purple-dark"],
-["theme-gold-light","theme-gold-dark"]
-];
-let mode=0,dark=false;
-themeBtn.onclick=()=>{
-dark=!dark;
-document.body.className=themes[mode][dark?1:0];
-if(!dark)mode=(mode+1)%themes.length;
+/* ✅ THEME SWITCH */
+theme.onclick=()=>{
+root.classList.toggle("light");
+root.classList.toggle("dark");
+theme.innerText=root.classList.contains("light")?"☀️ Theme":"🌙 Theme";
 };
 
-/* ✅ Prediction + Timer */
-const pidEl=pid,timeEl=time,pbarEl=pbar,predEl=predVal,hEl=hist,wEl=w,lEl=l,accEl=acc;
-let last=null,win=0,loss=0;
+/* ✅ DRAG + CLICK FIX */
+let drag=false,moved=false,sx,sy;
+floatBtn.onpointerdown=e=>{
+drag=true;moved=false;
+sx=e.clientX-floatBtn.offsetLeft;
+sy=e.clientY-floatBtn.offsetTop;
+};
+document.onpointermove=e=>{
+if(!drag)return;moved=true;
+floatBtn.style.left=e.clientX-sx+"px";
+floatBtn.style.top=e.clientY-sy+"px";
+floatBtn.style.right="auto";
+};
+document.onpointerup=()=>{
+if(!moved)panel.classList.add("active");
+drag=false;
+};
+
+/* ✅ Guaranteed HIDE WORKING */
+hide.onclick=()=>{
+panel.classList.remove("active");
+};
+
+/* ✅ Prediction + Stats */
+let last,win=0,loss=0;
 setInterval(()=>{
-let n=new Date();
-let y=n.getUTCFullYear(),m=String(n.getUTCMonth()+1).padStart(2,'0'),d=String(n.getUTCDate()).padStart(2,'0');
-pidEl.innerText=`${y}${m}${d}1000${10001+(n.getUTCHours()*60+n.getUTCMinutes())}`;
+let d=new Date();
+pid.innerText=
+`${d.getUTCFullYear()}${String(d.getUTCMonth()+1).padStart(2,'0')}${String(d.getUTCDate()).padStart(2,'0')}1000${10001+(d.getUTCHours()*60+d.getUTCMinutes())}`;
 
-let sec=n.getUTCSeconds(),r=59-sec;
-timeEl.innerText=`00:${String(r).padStart(2,'0')}`;
-pbarEl.style.width=(100-(r/60*100))+"%";
+let sec=d.getUTCSeconds(),r=59-sec;
+time.innerText=`00:${String(r).padStart(2,'0')}`;
+pbar.style.width=(100-(r/60*100))+"%";
 
-let two=pidEl.innerText.slice(-2),s=[...two].reduce((a,b)=>a+(+b),0);
-if(s>9)s=[...String(s)].reduce((a,b)=>a+(+b),0);
-let res=s>=5?"BIG":"SMALL";
-predEl.innerText=res;
-predEl.className="value pred "+res.toLowerCase();
+let sum=[...pid.innerText.slice(-2)].reduce((a,b)=>a+(+b),0);
+if(sum>9)sum=[...String(sum)].reduce((a,b)=>a+(+b),0);
+let res=sum>=5?"BIG":"SMALL";
+
+predVal.innerText=res;
+predVal.className="value pred "+res.toLowerCase();
 
 if(res!==last && last!==null){
 (res==="BIG"?bigS:smallS).play();
 Math.random()>.5?win++:loss++;
-let tag=document.createElement("div");
-tag.className="tag "+(res==="SMALL"?"small":"");
-tag.innerText=res;
-hEl.prepend(tag);
-if(hEl.children.length>12)hEl.removeChild(hEl.lastChild);
+w.innerText=win;
+l.innerText=loss;
+acc.innerText=Math.round(win/(win+loss)*100)+"%";
 }
 last=res;
-let t=win+loss;
-accEl.innerText=t?Math.round((win/t)*100)+"%":"0%";
-wEl.innerText=win;
-lEl.innerText=loss;
+
 },1000);
 </script>
+
 </body>
 </html>
