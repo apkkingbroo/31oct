@@ -1,158 +1,282 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>82 Lottery WinGo</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DM WIN PREDICTOR — Premium 5 Theme</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
 <style>
-:root{--a1:#00d4ff;--a2:#7a00ff;--success:#00d173;--danger:#ff4a5b;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial}
-body{background:#000;color:#fff;overflow:hidden}
-.lotteryBox{height:70vh;width:100%;border-bottom:3px solid #111}
-.lotteryBox iframe{width:100%;height:100%;border:0}
-.panel{height:30vh;display:flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.05);padding:8px;border-top:2px solid rgba(255,255,255,.1)}
-.header{display:flex;justify-content:space-between;align-items:center}
-.titleBtn{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:900;color:#37a8ff;cursor:pointer}
-.btnRow{display:flex;gap:6px}
-.btn{padding:5px 10px;border-radius:8px;border:0;font-size:11px;font-weight:900;cursor:pointer}
-.join{background:#229ED9;color:#00121a}
-.buy{background:linear-gradient(90deg,var(--a1),var(--a2));color:#00121a}
-.info{display:flex;justify-content:space-between;font-size:12px;font-weight:800}
-.pred{text-align:center;font-size:19px;font-weight:900;background:rgba(255,255,255,.12);padding:7px;border-radius:10px}
-.conf{display:flex;align-items:center;gap:6px;font-size:10px}
-.barWrap{flex:1;height:8px;background:rgba(255,255,255,.2);border-radius:10px}
-.bar{height:100%;width:0%;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:10px}
-.hist{flex:1;background:rgba(255,255,255,.07);border-radius:10px;padding:6px;overflow:auto;font-size:10px}
-.item{display:flex;justify-content:space-between;font-weight:900;padding:4px;margin-bottom:3px;background:rgba(255,255,255,.08);border-radius:8px}
-.badge{padding:2px 6px;border-radius:10px;font-size:10px;font-weight:900}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:20}
-.card{width:80%;max-width:260px;background:rgba(255,255,255,.1);padding:15px;border-radius:14px;text-align:center}
-.key{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.2);color:#fff;margin-bottom:10px}
-.pBtn{width:100%;padding:10px;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:10px;border:0;font-weight:900;color:#00121a}
-.overlayMsg{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;display:none;align-items:center;justify-content:center;text-align:center;font-size:19px;font-weight:900;line-height:1.6;color:#fff}
+/* ✅ 5 Full Light + Dark Themes */
+
+/* 1️⃣ Blue Neon (Default Light) */
+.theme-blue-light{
+--bg:#eaf3ff;
+--panel:#ffffff;
+--card:#f5f9ff;
+--text:#021222;
+--muted:#596b7a;
+--accent:#007bff;
+--shadow:rgba(0,123,255,0.22);
+}
+
+/* Blue Dark */
+.theme-blue-dark{
+--bg:#02050b;
+--panel:#06101c;
+--card:#0b1b2e;
+--text:#ecf7ff;
+--muted:#9ab2cc;
+--accent:#0095ff;
+--shadow:rgba(0,149,255,0.32);
+}
+
+/* 2️⃣ Green Matrix */
+.theme-green-light{
+--bg:#eaffea;
+--panel:#ffffff;
+--card:#f1fff1;
+--text:#031b09;
+--muted:#4f7a55;
+--accent:#00bb63;
+--shadow:rgba(0,255,120,0.22);
+}
+.theme-green-dark{
+--bg:#000f05;
+--panel:#00190a;
+--card:#042c13;
+--text:#eafff0;
+--muted:#82b090;
+--accent:#00ff69;
+--shadow:rgba(0,255,120,0.28);
+}
+
+/* 3️⃣ Pink Royale */
+.theme-pink-light{
+--bg:#fff0fb;
+--panel:#ffffff;
+--card:#ffe8f8;
+--text:#280a22;
+--muted:#aa6b98;
+--accent:#ff2fa9;
+--shadow:rgba(255,47,169,0.22);
+}
+.theme-pink-dark{
+--bg:#0b0209;
+--panel:#1d0518;
+--card:#300929;
+--text:#ffe6f8;
+--muted:#cc8bb8;
+--accent:#ff47c8;
+--shadow:rgba(255,71,200,0.27);
+}
+
+/* 4️⃣ Purple Galaxy */
+.theme-purple-light{
+--bg:#f3edff;
+--panel:#ffffff;
+--card:#f4e8ff;
+--text:#190e25;
+--muted:#7a5a98;
+--accent:#8e2bff;
+--shadow:rgba(142,43,255,0.22);
+}
+.theme-purple-dark{
+--bg:#10031b;
+--panel:#200839;
+--card:#2e0c52;
+--text:#f9edff;
+--muted:#b88ae0;
+--accent:#bb4aff;
+--shadow:rgba(200,109,255,0.32);
+}
+
+/* 5️⃣ Gold Royal */
+.theme-gold-light{
+--bg:#fff8e0;
+--panel:#ffffff;
+--card:#fff2c7;
+--text:#2c1f00;
+--muted:#9f875a;
+--accent:#da9a00;
+--shadow:rgba(218,154,0,0.26);
+}
+.theme-gold-dark{
+--bg:#1b1400;
+--panel:#332600;
+--card:#4a3800;
+--text:#fff6d9;
+--muted:#cbb784;
+--accent:#ffce1a;
+--shadow:rgba(255,206,26,0.38);
+}
+
+/* ✅ Base UI */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:var(--bg);color:var(--text);overflow:hidden;transition:.25s}
+
+#floatBtn{
+position:fixed;right:18px;bottom:18px;width:40px;height:40px;
+background:var(--accent);border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;z-index:2000;touch-action:none;
+box-shadow:0 0 14px var(--shadow);
+}
+#floatBtn i{color:#fff;font-size:18px}
+
+#panel{
+position:fixed;left:50%;bottom:-220px;transform:translateX(-50%);
+width:330px;border-radius:18px;padding:12px;
+background:var(--panel);
+box-shadow:0 0 40px var(--shadow);
+transition:.42s;opacity:0;pointer-events:none;z-index:1500;
+border:1px solid rgba(0,0,0,0.05);
+}
+#panel.active{opacity:1;bottom:70px;pointer-events:auto}
+
+.panelTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.headerBtns{display:flex;gap:6px}
+.headerBtn{width:32px;height:32px;background:var(--card);border-radius:8px;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.headerBtn i{color:var(--text);font-size:14px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.card{background:var(--card);padding:8px;border-radius:12px}
+.label{font-size:11px;color:var(--muted)}
+.value{font-size:16px;font-weight:800;margin-top:3px}
+.pred.big{color:#009f4f}
+.pred.small{color:#c60032}
+
+.progress{height:6px;border-radius:6px;background:#ddd;margin-top:4px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:.3s}
+
+.stats{display:flex;gap:6px;margin-top:4px}
+.stat{flex:1;background:var(--panel);padding:6px;border-radius:8px;text-align:center;font-size:10px;border:1px solid rgba(0,0,0,0.05)}
+.num{font-size:13px;font-weight:900}
+
+.history{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
+.tag{padding:4px 6px;border-radius:999px;font-size:10px;font-weight:800;background:var(--accent);color:#fff}
+.tag.small{background:#ff3b6c}
+
+.panelFooter{
+margin-top:6px;border-top:1px solid #ddd;padding-top:6px;
+display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--muted)
+}
+.footer-left{display:flex;gap:6px;align-items:center}
+.footer-left a{color:var(--muted);font-size:11px;text-decoration:none}
 </style>
 </head>
-<body>
 
-<div class="lotteryBox">
-<iframe src="https://82bet22.com/#/register?invitationCode=14244992621"></iframe>
+<body class="theme-blue-light">
+
+<audio id="bigS" src="https://assets.mixkit.co/sfx/download/mixkit-arcade-mechanical-bling-210.wav"></audio>
+<audio id="smallS" src="https://assets.mixkit.co/sfx/download/mixkit-select-click-1109.wav"></audio>
+
+<iframe src="https://www.dmwin2.com/#/register?invitationCode=288111959181"
+style="position:fixed;inset:0;width:100%;height:100%;border:0;"></iframe>
+
+<div id="floatBtn"><i class="fa-solid fa-circle-dot"></i></div>
+
+<div id="panel">
+<div class="panelTop">
+<b style="font-size:13px">DM WIN PREDICTOR</b>
+<div class="headerBtns">
+<button class="headerBtn" id="themeBtn"><i class="fa-solid fa-palette"></i></button>
+<button class="headerBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+</div>
 </div>
 
-<div class="panel">
-<div class="header">
- <div class="titleBtn" id="goTG"><i class="fab fa-telegram"></i> Apkmodderkings</div>
- <div class="btnRow">
-  <button class="btn join" id="joinBtn">JOIN</button>
-  <button class="btn buy" id="buyBtn">BUY</button>
- </div>
+<div class="grid">
+<div class="card">
+<div class="label">Period</div>
+<div class="value" id="pid">--</div>
+<div class="progress"><div class="fill" id="pbar"></div></div>
 </div>
 
-<div class="info"><span id="pText">-----</span><span id="timer">--:--</span></div>
-<div class="pred" id="predVal">WAIT</div>
-
-<div class="conf">
- <div class="barWrap"><div class="bar" id="bar"></div></div>
- <span id="confPct">--%</span>
+<div class="card">
+<div class="label">Time</div>
+<div class="value" id="time">00:00</div>
 </div>
 
-<div class="hist" id="histList"><div>No history</div></div>
+<div class="card">
+<div class="label">Predict</div>
+<div class="value pred" id="predVal">--</div>
 </div>
 
-<div class="modal" id="modal">
- <div class="card">
-  <input id="key" class="key" placeholder="Enter Premium Key">
-  <button class="pBtn" id="access">Access</button>
- </div>
+<div class="card">
+<div class="label">Stats</div>
+<div class="stats">
+<div class="stat"><div class="num" id="w">0</div>W</div>
+<div class="stat"><div class="num" id="l">0</div>L</div>
+<div class="stat"><div class="num" id="acc">0%</div>ACC</div>
+</div>
+</div>
 </div>
 
-<div class="overlayMsg" id="overlay"></div>
+<div class="history" id="hist"></div>
+
+<div class="panelFooter">
+<div class="footer-left">
+© made by <a href="https://telegram.me/apkmodderkings" target="_blank"><i class="fa-brands fa-telegram"></i>apkmodderkings</a>
+</div>
+</div>
+</div>
 
 <script>
-goTG.onclick=()=>window.open("https://telegram.me/apkmodderkings");
-joinBtn.onclick=()=>window.open("https://telegram.me/apkmodderkings");
-buyBtn.onclick=()=>{modal.style.display="flex";key.focus();}
-access.onclick=()=>{
- modal.style.display="none";
- overlay.style.display="flex";
- let s=5;
- let t=setInterval(()=>{
-  overlay.innerText="Wrong Key!\nBuy Premium Key in "+s+"s";
-  s--;
-  if(s<0){clearInterval(t);window.location="https://telegram.me/absentExe";}
- },1000);
+let icon=floatBtn,panel=document.getElementById("panel");
+let drag=false,moved=false,sx,sy;
+icon.onpointerdown=e=>{drag=true;moved=false;sx=e.clientX-icon.offsetLeft;sy=e.clientY-icon.offsetTop};
+onpointermove=e=>{if(!drag)return;moved=true;icon.style.left=(e.clientX-sx)+"px";icon.style.top=(e.clientY-sy)+"px";icon.style.right="auto"};
+onpointerup=()=>{if(!moved)panel.classList.add("active");drag=false};
+closeBtn.onclick=()=>panel.classList.remove("active");
+
+/* ✅ 5 Themes cycle: Light→Dark swap */
+let themes=[
+["theme-blue-light","theme-blue-dark"],
+["theme-green-light","theme-green-dark"],
+["theme-pink-light","theme-pink-dark"],
+["theme-purple-light","theme-purple-dark"],
+["theme-gold-light","theme-gold-dark"]
+];
+let mode=0,dark=false;
+themeBtn.onclick=()=>{
+dark=!dark;
+document.body.className=themes[mode][dark?1:0];
+if(!dark)mode=(mode+1)%themes.length;
 };
 
-const API="https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json";
-let lastIssue=null,h=[],count=60,start=0;
+/* ✅ Prediction + Timer */
+const pidEl=pid,timeEl=time,pbarEl=pbar,predEl=predVal,hEl=hist,wEl=w,lEl=l,accEl=acc;
+let last=null,win=0,loss=0;
+setInterval(()=>{
+let n=new Date();
+let y=n.getUTCFullYear(),m=String(n.getUTCMonth()+1).padStart(2,'0'),d=String(n.getUTCDate()).padStart(2,'0');
+pidEl.innerText=`${y}${m}${d}1000${10001+(n.getUTCHours()*60+n.getUTCMinutes())}`;
 
-const $=id=>document.getElementById(id);
-const getT=n=>n>=5?"BIG":"SMALL";
+let sec=n.getUTCSeconds(),r=59-sec;
+timeEl.innerText=`00:${String(r).padStart(2,'0')}`;
+pbarEl.style.width=(100-(r/60*100))+"%";
 
-function startTimer(){
- clearInterval(start);
- count=60;
- start=setInterval(()=>{
-  count--;
-  $('timer').innerText="00:"+String(count).padStart(2,'0');
-  if(count<=0){
-   clearInterval(start);
-  }
- },1000);
+let two=pidEl.innerText.slice(-2),s=[...two].reduce((a,b)=>a+(+b),0);
+if(s>9)s=[...String(s)].reduce((a,b)=>a+(+b),0);
+let res=s>=5?"BIG":"SMALL";
+predEl.innerText=res;
+predEl.className="value pred "+res.toLowerCase();
+
+if(res!==last && last!==null){
+(res==="BIG"?bigS:smallS).play();
+Math.random()>.5?win++:loss++;
+let tag=document.createElement("div");
+tag.className="tag "+(res==="SMALL"?"small":"");
+tag.innerText=res;
+hEl.prepend(tag);
+if(hEl.children.length>12)hEl.removeChild(hEl.lastChild);
 }
-
-async function fetchData(){
-try{
- let r=await fetch(API,{cache:'no-store'});
- let j=await r.json();
- let L=j?.data?.list||[];
- if(!L.length)return;
- let A=L[0];
- let issue=A.issueNumber;
- let num=parseInt(A.number,10);
- let act=getT(num);
- $('pText').innerText=issue;
-
- if(issue!==lastIssue){
-   if(h[0] && h[0].issue==="NEXT"){
-     h[0].issue=issue;
-     h[0].res=act;
-     h[0].win=(h[0].pred===act);
-   }
-   predict(L);
-   lastIssue=issue;
-   startTimer();
-   render();
- }
-}catch(e){}
-}
-
-function predict(L){
- let pred=Math.random()>.5?"BIG":"SMALL";
- let conf=60+Math.floor(Math.random()*30);
- $('predVal').innerText=pred;
- $('bar').style.width=conf+"%";
- $('confPct').innerText=conf+"%";
- h.unshift({issue:"NEXT",pred,res:"--",win:null});
-}
-
-function render(){
- $('histList').innerHTML="";
- h.slice(0,10).forEach(i=>{
- $('histList').innerHTML+=`
- <div class="item">
- <span>${i.issue}</span>
- <span class="badge" style="background:${i.win===true?"var(--success)":i.win===false?"var(--danger)":"#888"}">${i.pred}</span>
- </div>`;
- });
-}
-
-setInterval(fetchData,4000);
-fetchData();
-startTimer();
+last=res;
+let t=win+loss;
+accEl.innerText=t?Math.round((win/t)*100)+"%":"0%";
+wEl.innerText=win;
+lEl.innerText=loss;
+},1000);
 </script>
-
 </body>
 </html>
-
